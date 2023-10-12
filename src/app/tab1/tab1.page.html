@@ -1,0 +1,23 @@
+<ion-content>
+    <div class="center-container ">
+      <ion-grid class="">
+        <h2 class="text-center currentWeather" >Current Weather</h2>
+        <ion-row size="12" class="row">
+          <ion-col size="6" class="text-center">
+            <input type="text" placeholder="Enter City" [(ngModel)]="inputCity" class="custom-input" required>
+          </ion-col>
+          <ion-col size="6" class="text-center">
+            <button class="btn btn-light" (click)="search()">Search</button>
+          </ion-col>
+        </ion-row>
+        <div *ngIf="error" class="error-message">
+          Error: {{ error }}
+        </div>
+        <div *ngIf="weatherData" class="data">
+          <h3 class="text-center custom-heading">{{weatherData?.name}}</h3>
+          <p class="text-center custom-para">Temperature:  {{weatherData?.main?.temp}} <ion-icon name="thermometer"></ion-icon></p>
+          <p class="text-center custom-para">Weather:  {{weatherData?.weather[0]?.description}}</p>
+        </div>
+      </ion-grid>
+    </div>
+</ion-content>

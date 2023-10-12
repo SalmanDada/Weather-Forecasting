@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="center-container ">
+    <ion-grid class="">
+      <h2 class="text-center forecastWeather">Weather Forecast</h2>
+      <ion-row size="12" class="row">
+        <ion-col size="6" class="text-center">
+          <input type="text" placeholder="Enter City" [(ngModel)]="inputCity" class="custom-input" required>
+        </ion-col>
+        <ion-col size="6" class="text-center">
+          <button class="btn btn-light" (click)="search()">Search</button>
+        </ion-col>
+      </ion-row>
+      <div *ngIf="error" class="error-message">
+        Error: {{ error }}
+      </div>
+      <div *ngIf="forcastData">
+        <h3 class="text-center custom-heading">{{forcastData?.city?.name}}</h3>
+        <ion-row *ngFor="let x of forcastData?.list.slice(0,3)">
+          <ion-col size="4">
+            <p class="text-center custom-para">Date: {{x?.dt_txt}}</p>
+          </ion-col>
+          <ion-col size="4">
+            <p class="text-center custom-para">Temperature: {{x?.main?.temp}} <ion-icon name="thermometer"></ion-icon>
+            </p>
+          </ion-col>
+          <ion-col size="4">
+            <p class="text-center custom-para">Weather: {{x?.weather[0]?.description}}</p>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-grid>
+  </div>
+</ion-content>
